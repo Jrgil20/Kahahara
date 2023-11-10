@@ -6,8 +6,25 @@
     <title>Kahhara admin</title>
     <style>
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
             background-color: #a2d1f2; 
-            /* Cambia este valor al color de fondo que prefieras */
+        }
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh; /* Ajusta este valor para cambiar la altura */
+            flex-direction: column;
+            border: 5px solid rgb(15, 40, 107); /* Añade un borde */
+            padding: 20px; /* Añade un poco de espacio alrededor del contenido */
+            width: 200px; /* Ajusta este valor al ancho que prefieras */
+            margin: auto; /* Centra el contenedor en la página */
+            background-color: #f0f0f0;
+            border-radius: 25px;  
         }
         h1 {
             text-align: center;
@@ -18,6 +35,41 @@
     </style>
 </head>
 <body>
-    
+    <div class="login-container">
+        // se necesita un servidor que resiba una solicitud get para manejar la autentificacion
+        <form action="/ruta_a_tu_servidor" method="post">
+            <input type="text" id="username" name="username" placeholder="Nombre de Usuario" required><br><br>
+            <input type="password" id="password" name="password" placeholder="contraseña" required><br>
+            <input type="submit" id="submit" style="display: none;">
+        </form>
+    </div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "" || password === "") {
+                alert("Por favor, completa todos los campos.");
+                event.preventDefault(); // Evita que el formulario se envíe
+            } else if (password.length < 8) {
+                alert("La contraseña debe tener al menos 8 caracteres.");
+                event.preventDefault(); // Evita que el formulario se envíe
+            }else {
+                //agregar el código para manejar el inicio de sesión
+   
+            }
+        });
+
+        document.getElementById("togglePassword").addEventListener("click", function() {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    });
+    </script>
+
 </body>
 </html>
