@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const PORT = process.env.port ?? 3000;
-const HOST = process.env.host ?? 'https://friendly-lamp-pjj6prjjp5xhvpr-3000.app.github.dev';
+const HOST = process.env.host ?? 'special-happiness-gg7w55p97qrhp6vj-3000.app.github.dev';
 
 app.use(express.json()); // Para poder parsear JSON
 
