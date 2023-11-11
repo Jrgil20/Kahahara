@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+const PORT = process.env.port ?? 3000;
+const HOST = process.env.host ?? 'https://friendly-lamp-pjj6prjjp5xhvpr-3000.app.github.dev';
+
 app.use(express.json()); // Para poder parsear JSON
 
 let users = [
@@ -17,4 +20,7 @@ app.post('/login', (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log('Servidor corriendo en http://localhost:3000'));
+// Para servir los archivos estáticos, se debe instruir a Express a hacerlo (express.static(...)) <- Puse los archivos en un directorio "public" para organizar los contenidos (separar el "servidor" del "cliente")...
+app.use(express.static('public'));
+
+app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));

@@ -36,7 +36,12 @@
 </head>
 <body>
     <div class="login-container">
-        <form action="http://localhost:3000/login" method="post">
+        <form action="/login" method="post">
+            <!-- El URL estaba apuntando a "localhost" (pero, si inicias la aplicación con un host diferente, por ejemplo, en Codespaces, ya "localhost" no está disponible. -->
+            <!-- Se eliminó esa porción (host) para que tome de manera predeterminada la base o host del servidor que está sirviendo el documento -->
+            <!-- (p. ej. en mi Codespaces es https://friendly-lamp-pjj6prjjp5xhvpr-3000.app.github.dev/) -->
+
+            <!-- Realmente en el "action" del form no estaría haciendo falta cambiar nada porque estás reemplazando la funcionalidad con un "fetch" vía JS (aunque tampoco haría falta hacer un fetch, pero eso lo vamos a ver en la próxima clase)-->
             <input type="text" id="username" name="username" placeholder="Nombre de Usuario" required><br><br>
             <input type="password" id="password" name="password" placeholder="contraseña" required><br>
             <input type="submit" id="submit" style="display: none;">
@@ -60,7 +65,8 @@
                 event.preventDefault(); // Evita que el formulario se envíe
             }else {
             // Aquí enviamos la solicitud POST al servidor
-            fetch('http://localhost:3000/login', {
+            fetch('/login', { // El URL estaba apuntando a "localhost" (pero, si inicias la aplicación con un host diferente, por ejemplo, en Codespaces, ya "localhost" no está disponible.
+                              // Se eliminó esa porción (host) para que tome de manera predeterminada la base o host del servidor que está sirviendo el documento (p. ej. en mi Codespaces es https://friendly-lamp-pjj6prjjp5xhvpr-3000.app.github.dev/)
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
